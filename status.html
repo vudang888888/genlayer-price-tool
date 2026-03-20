@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Node Status Checker</h1>
+  <p id="status">Checking...</p>
+
+  <script>
+    async function check() {
+      try {
+        const res = await fetch("https://api.coingecko.com/api/v3/ping");
+        if (res.ok) {
+          document.getElementById("status").innerText = "Node is running ✅";
+        } else {
+          document.getElementById("status").innerText = "Node error ❌";
+        }
+      } catch {
+        document.getElementById("status").innerText = "Offline ❌";
+      }
+    }
+    check();
+  </script>
+</body>
+</html>
